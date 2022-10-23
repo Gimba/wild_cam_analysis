@@ -55,3 +55,4 @@ def custom_read_image(image_file):
     img = cv2.imread(image_file)
     # removing status bar
     img = img[:1020, :]
+    return img
