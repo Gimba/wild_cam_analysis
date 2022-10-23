@@ -20,17 +20,19 @@ def extract_image_from_video(video_file, frame_interval=100):
     # frame counter
     current_frame = -1
 
+    image_files = []
+
     while (True):
         current_frame += 1
         # reading from frame
         ret, frame = video_data.read()
-        print(current_frame % frame_interval)
         if ret:
             if current_frame % frame_interval == 0:
                 # if video is still left continue creating images
                 name = os.path.join(folder, 'frame_' + str(current_frame) + '.jpg')
                 print('Creating...' + name)
 
+                image_files.append(name)
                 # writing the extracted images
                 cv2.imwrite(name, frame)
 
@@ -39,10 +41,12 @@ def extract_image_from_video(video_file, frame_interval=100):
 
         else:
             break
-
+    # image_files = [os.path.join(video_file.split(".")[0], f) for f in image_files]
+    image_files = sorted(image_files, key=lambda x: int(x.split("_")[1].split(".")[0]))
     # Release all space and windows once done
     video_data.release()
     cv2.destroyAllWindows()
+    return image_files
 
 
 def image_difference(img_1, img_2):
