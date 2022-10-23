@@ -43,3 +43,10 @@ def extract_image_from_video(video_file, frame_interval=100):
     # Release all space and windows once done
     video_data.release()
     cv2.destroyAllWindows()
+
+def image_difference(image_file_1, image_file_2):
+    img_1 = cv2.imread(image_file_1)
+    img_2 = cv2.imread(image_file_2)
+    image3 = cv2.absdiff(img_1, img_2)
+    # cv2.imwrite("diff.jpg", image3)
+    return image3
