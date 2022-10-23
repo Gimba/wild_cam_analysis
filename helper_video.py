@@ -1,14 +1,17 @@
 import cv2
 import os
+from pathlib import Path
 
+def extract_image_from_video(video_file, frame_interval):
+    pth = Path(video_file)
 
-def extract_image_from_video(video_file, interval):
     video_data = cv2.VideoCapture(video_file)
 
     try:
         # creating a folder named data
-        if not os.path.exists('data'):
-            os.makedirs('data')
+        folder = 'extracted_images_' + pth.stem
+        if not os.path.exists(folder):
+            os.makedirs(folder)
 
     # if not created then raise error
     except OSError:
