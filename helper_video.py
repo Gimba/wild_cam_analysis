@@ -44,9 +44,14 @@ def extract_image_from_video(video_file, frame_interval=100):
     video_data.release()
     cv2.destroyAllWindows()
 
-def image_difference(image_file_1, image_file_2):
-    img_1 = cv2.imread(image_file_1)
-    img_2 = cv2.imread(image_file_2)
+
+def image_difference(img_1, img_2):
     image3 = cv2.absdiff(img_1, img_2)
     # cv2.imwrite("diff.jpg", image3)
     return image3
+
+
+def custom_read_image(image_file):
+    img = cv2.imread(image_file)
+    # removing status bar
+    img = img[:1020, :]
