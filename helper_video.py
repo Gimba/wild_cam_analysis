@@ -1,21 +1,14 @@
 import cv2
 import os
 from pathlib import Path
+import glob
 
 
 def extract_image_from_video(video_file, frame_interval=100):
     pth = Path(video_file)
     video_data = cv2.VideoCapture(video_file)
-
-    try:
-        # creating a folder named data
-        folder = os.path.join(pth.parent, pth.stem)
-        if not os.path.exists(folder):
-            os.makedirs(folder)
-
-    # if not created then raise error
-    except OSError:
-        print('Error: Creating directory of data')
+    folder = os.path.join(pth.parent, pth.stem)
+    create_dir(folder)
 
     # frame counter
     current_frame = -1
@@ -60,3 +53,13 @@ def custom_read_image(image_file):
     # removing status bar
     img = img[:1020, :]
     return img
+
+
+def create_dir(dir):
+    try:
+        if not os.path.exists(dir):
+            os.makedirs(dir)
+
+    # if not created then raise error
+    except OSError:
+        print('Error: Creating directory of data')
