@@ -2,7 +2,7 @@ import cv2
 import os
 from pathlib import Path
 import glob
-
+import shutil
 
 def extract_image_from_video(video_file, frame_interval=100):
     pth = Path(video_file)
@@ -63,3 +63,17 @@ def create_dir(dir):
     # if not created then raise error
     except OSError:
         print('Error: Creating directory of data')
+
+
+def gather_training_data(path):
+    training_data_path = os.path.join(path,"training_data")
+    create_dir(training_data_path)
+    counter = 0
+    for root, dirs, files in os.walk(path):
+        for filename in files:
+            if filename.lower().endswith(".jpg") and filename.count('frame') == 2:
+                print(os.path.join(root, filename))
+                shutil.copy(os.path.join(root, filename), os.path.join(path, training_data_path, "image" + str(
+                    counter) +
+                                                                       ".jpg"))
+                counter += 1
