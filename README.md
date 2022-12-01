@@ -35,10 +35,10 @@ A mammal was detected with a convidence of only 67%. The marten was not recogniz
 The cat was not detected nor any othe animal. I think the car label is also quite funny.
 
 ![210416_dscf0019](https://user-images.githubusercontent.com/5765662/205001573-badd120e-80ed-47d3-a99c-5edc7dfa5fb6.jpg)
-The mouse did not get recognized. Therefore a mammal was detected with a confidence of 73% which it thinks may be a cougar (57%), kit fox (57%) or a fox (57%). No idea where this is recognized since no bounding box is given.
+The mouse did not get recognized. Though, a mammal was detected with a confidence of 73% which AWS Rekognition thinks may be a cougar (57%), kit fox (57%) or a fox (57%). No idea where this is recognized since no bounding box is given.
 
 These last three images were all taken with infrared lighting as you might have noticed. For images taken in daylight it seems to work a little better but this is just my gut feeling.
 
 It showed that AWS Rekognition is good at detecting an animal of some kind in images. All images that were interesting (meaning containing an animal) were highlighted. However, when it comes to the type of animal, there are issues. For example, cats got labelled as dogs, pigs and bears and mice never got recognized as such.
 
-Using the knowledge that e.g. no pigs nor any bears walk around my garden a custom object recognition neural net can be trained on [the difference images](#difference) that should in theory outperform existing models.
+Using the knowledge that e.g. no pigs or any bears parole my garden a custom object recognition neural net with fewer labels can be trained on that should in theory outperform existing models. At this point, I am also courious how [the difference images](#difference) influence the performance.
