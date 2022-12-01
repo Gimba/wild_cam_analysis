@@ -41,4 +41,4 @@ These last three images were all taken with infrared lighting as you might have 
 
 It showed that AWS Rekognition is good at detecting an animal of some kind in images. All images that were interesting (meaning containing an animal) were highlighted. However, when it comes to the type of animal, there are issues. For example, cats got labelled as dogs, pigs and bears and mice never got recognized as such.
 
-
+Using the knowledge that e.g. no pigs nor any bears walk around my garden a custom object recognition neural net can be trained on [the difference images](#difference) that should in theory outperform existing models.
