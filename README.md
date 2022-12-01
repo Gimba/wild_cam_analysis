@@ -19,7 +19,7 @@ The problem at hand, differentiating interesting videos (e.g. an animal moving i
 <a name="difference"></a>
 ![Difference_frame](https://user-images.githubusercontent.com/5765662/203027162-91dd26f3-ab5c-4324-8994-4df4c8adce72.jpg)
 
-Using these ["difference images"](#difference) for training an image classification neural net did not result in the desired accuracy and it got apparent, that object recognition is maybe better suited for the task. Therefore, the next thing I tried was to use AWS Rekognition on [extracted frames](#extracted). Here, the bird was detected in the image with a confidence of 94%.
+Using these ["difference images"](#difference) for training an image classification neural net did not result in the desired accuracy and it got apparent, that object recognition is maybe better suited for the task. Therefore, the next thing I tried was to use [AWS Rekognition](https://aws.amazon.com/de/rekognition/) on [extracted frames](#extracted). Here, the bird was detected in the image with a confidence of 94%.
 
 <a name="aws_rekognition_extracted"></a>
 ![aws_recognition_bird](https://user-images.githubusercontent.com/5765662/203055062-08916262-b920-445a-91df-429950a459ea.jpg)
@@ -36,3 +36,9 @@ The cat was not detected nor any othe animal. I think the car label is also quit
 
 ![210416_dscf0019](https://user-images.githubusercontent.com/5765662/205001573-badd120e-80ed-47d3-a99c-5edc7dfa5fb6.jpg)
 The mouse did not get recognized. Therefore a mammal was detected with a confidence of 73% which it thinks may be a cougar (57%), kit fox (57%) or a fox (57%). No idea where this is recognized since no bounding box is given.
+
+These last three images were all taken with infrared lighting as you might have noticed. For images taken in daylight it seems to work a little better but this is just my gut feeling.
+
+It showed that AWS Rekognition is good at detecting an animal of some kind in images. All images that were interesting (meaning containing an animal) were highlighted. However, when it comes to the type of animal, there are issues. For example, cats got labelled as dogs, pigs and bears and mice never got recognized as such.
+
+
